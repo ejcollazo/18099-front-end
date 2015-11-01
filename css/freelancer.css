@@ -175,7 +175,7 @@ header .intro-text .skills {
 }
 
 section {
-    padding: 100px 0;
+    padding: 5px 0;
 }
 
 section h2 {
@@ -201,13 +201,6 @@ section.success a.active {
 }
 
 @media(max-width:767px) {
-    section {
-        padding: 75px 0;
-    }
-
-    section.first {
-        padding-top: 75px;
-    }
 }
 
 #portfolio .portfolio-item {
@@ -479,6 +472,24 @@ footer .footer-below {
 .location {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+
+.expand {
+    max-height: 120px;
+    position: relative;
+    overflow: hidden;
+}
+.expand .read-more { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    text-align: center; 
+    margin: 0; padding: 30px 0; 
+    
+    /* "transparent" only works here because == rgba(0,0,0,0) */
+    background-image: linear-gradient(to bottom, transparent, white);
 }
 
 

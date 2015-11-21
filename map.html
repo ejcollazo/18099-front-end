@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href="css/mapCSS.css" rel="stylesheet">
+
+    <title>18099 Test Map</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+// This example displays a marker at the center of Australia.
+// When the user clicks the marker, an info window opens.
+
+function initMap() {
+
+  var cut = {lat: 40.442978,  lng: -79.943079};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: cut
+  });
+
+  var contentString = '<div id="poi-iw">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">The Cut</h1>'+
+      '<div id="bodyContent">'+
+      '<p>The cut is where CMU kiddies go to play.</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+
+  var image = {
+    url: "/img/ticket_icon.png",
+    // This marker is 20 pixels wide by 32 pixels high.
+    size: new google.maps.Size(20, 32),
+    // The origin for this image is (0, 0).
+    origin: new google.maps.Point(0, 0),
+    // The anchor for this image is the base of the flagpole at (0, 32).
+    anchor: new google.maps.Point(0, 32)
+  };
+
+
+  var marker = new google.maps.Marker({
+    position: cut,
+    map: map,
+    title: "The Cut"
+  });
+  
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+
+  google.maps.event.addListener(infowindow, 'domready', function() {
+
+   // Reference to the DIV which receives the contents of the infowindow using jQuery
+   var iwOuter = $('.gm-style-iw');
+
+   /* The DIV we want to change is above the .gm-style-iw DIV.
+    * So, we use jQuery and create a iwBackground variable,
+    * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+    */
+   var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+});
+
+
+}
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyziVLzfgop9wIVlqK2xCKqMkU6JUK-Wk&signed_in=true&callback=initMap"></script>
+  </body>
+</html>

@@ -491,5 +491,3 @@ footer .footer-below {
     /* "transparent" only works here because == rgba(0,0,0,0) */
     background-image: linear-gradient(to bottom, transparent, white);
 }
-
-

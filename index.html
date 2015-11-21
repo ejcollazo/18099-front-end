@@ -182,7 +182,6 @@
                 }); 
         
             $.get("http://52.27.55.252:5000/test/cmu-campus-app/", function(response, status){
-                console.log("hi");
                 for (i = 0; i < response["data"][0]["poi_data"]["images"].length; i++){
                     console.log(response.length);
                     var toAdd = '<div class="item';
@@ -196,11 +195,6 @@
                     $("#poi-carousel").append(toAdd);
                 }
                 $("#description").text(response["data"][0]["poi_data"]["description"]);
-                $("#description").append("lalalal");
-/*                $("#img1").src(response["data"][0]["poi_data"]["images"][0]);
-                $("#img2").src(response["data"][0]["poi_data"]["images"][1]);
-                $("#img3").src(response["data"][0]["poi_data"]["images"][2]);
-*/
             });
         });  
     </script>  
